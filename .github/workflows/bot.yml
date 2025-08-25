@@ -2,8 +2,8 @@ name: Twitter Bot
 
 on:
   schedule:
-    - cron: "0 */6 * * *"   # كل 6 ساعات UTC
-  workflow_dispatch:        # لتشغيل يدويًا عند الحاجة
+    - cron: "0 */6 * * *"  # كل 6 ساعات UTC
+  workflow_dispatch:       # لتشغيل يدويًا عند الحاجة
 
 jobs:
   run-bot:
