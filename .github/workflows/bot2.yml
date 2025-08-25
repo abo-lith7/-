@@ -1,0 +1,30 @@
+name: Run Twitter Bot 2
+
+on:
+  schedule:
+    - cron: '0 */5 * * *'   # كل 5 ساعات UTC
+  workflow_dispatch:         # لتشغيل يدوي
+
+jobs:
+  run-bot2:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Twitter Bot 2
+        env:
+          API_KEY: ${{ secrets.API_KEY }}
+          API_SECRET: ${{ secrets.API_SECRET }}
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          ACCESS_TOKEN_SECRET: ${{ secrets.ACCESS_TOKEN_SECRET }}
+        run: python bot2.py
